@@ -1,0 +1,13 @@
+# terraform.tfvars — Copy this file and fill in your values.
+# Never commit this file to git (it's in .gitignore).
+
+linode_token         = "YOUR_LINODE_API_TOKEN"
+root_password        = "Ch@ngeMe!SuperStr0ng"
+ssh_public_key_path  = "~/.ssh/id_rsa.pub"
+ssh_private_key_path = "~/.ssh/id_rsa"
+
+# Defaults below are already set in variables.tf — override here if needed:
+# region             = "us-ord"
+# num_workers        = 2
+# controlplane_type  = "g6-standard-2"   # 2 vCPU / 4 GB — ~$18/mo
+# worker_type        = "g6-standard-1"   # 1 vCPU / 2 GB — ~$12/mo each
