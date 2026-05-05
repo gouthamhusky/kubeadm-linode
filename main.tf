@@ -16,7 +16,7 @@ provider "linode" {
 
 resource "linode_sshkey" "kubeadm" {
   label   = "kubeadm-key"
-  ssh_key = file(var.ssh_public_key_path)
+  ssh_key = trimspace(file(var.ssh_public_key_path))
 }
 
 # ─── Private VLAN (for inter-node communication) ──────────────────────────────
