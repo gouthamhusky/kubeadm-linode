@@ -42,10 +42,12 @@ resource "linode_instance" "controlplane" {
 
   # Bootstrap script: sets hostname, enables kernel modules,
   # configures sysctl, and installs container runtime + kubeadm tooling
-  user_data = base64encode(templatefile("${path.module}/scripts/bootstrap.sh", {
-    hostname   = "controlplane"
-    node_role  = "controlplane"
-  }))
+  metadata {
+    user_data = base64encode(templatefile("${path.module}/scripts/bootstrap.sh", {
+      hostname   = "controlplane"
+      node_role  = "controlplane"
+    }))
+  }
 }
 
 # ─── Worker Nodes ─────────────────────────────────────────────────────────────
@@ -63,10 +65,12 @@ resource "linode_instance" "workers" {
 
   tags = ["kubeadm", "worker"]
 
-  user_data = base64encode(templatefile("${path.module}/scripts/bootstrap.sh", {
-    hostname   = "node0${count.index + 1}"
-    node_role  = "worker"
-  }))
+  metadata {
+    user_data = base64encode(templatefile("${path.module}/scripts/bootstrap.sh", {
+      hostname   = "node0${count.index + 1}"
+      node_role  = "worker"
+    }))
+  }
 }
 
 # ─── /etc/hosts provisioner ───────────────────────────────────────────────────
