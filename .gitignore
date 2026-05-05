@@ -1,0 +1,17 @@
+# Terraform secrets — never commit
+*.tfvars
+
+# Terraform provider cache — auto-generated, large binaries
+.terraform/
+
+# Local override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform plan output (may contain secrets)
+*.tfplan
+
+# macOS
+.DS_Store
